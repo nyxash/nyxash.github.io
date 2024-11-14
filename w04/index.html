@@ -1,1 +1,292 @@
-test
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MusixMix - Discover</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            padding-top: 120px;
+        }
+
+        #home {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            margin-top: -150px;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .card-img-top {
+            transition: all 0.3s ease;
+        }
+
+        .card-img-top:hover {
+            filter: brightness(0.6);
+        }
+    </style>
+</head>
+
+<body data-bs-theme="light" id="body">
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow"
+        style="position: fixed; top: 0; width: 100%; z-index: 1000;">
+        <div class="container-fluid">
+            <a class="navbar-brand ps-5" style="font-size: 25px; font-weight: 500;" href="#home">
+                <img id="navbar-logo"
+                    src="https://github.com/nyxash/files/blob/2fc060fe30f97846177fd20ac9d5447ac797e130/lightlogo.png?raw=true"
+                    alt="Brand Logo" style="width: 100px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav mb-2 mb-lg-0 me-5" style="font-weight: 600; font-size: large;">
+                    <li class="nav-item">
+                        <a class="nav-link bi-music-note-beamed" href="index.html">&nbsp;Discover</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link bi-search" href="search.html">&nbsp;Search</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid" id="home" style="padding-top: 80px; width: 100%;">
+        <div class="video-container-fluid" style="position: relative; width: 100%; height: 100vh; overflow: hidden;">
+            <div class="overlay"></div>
+            <iframe
+                src="https://www.youtube.com/embed/bFVBaWD9SQ0?rel=0&autoplay=1&controls=0&loop=1&modestbranding=0&showinfo=0&disablekb=1&mute=1"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                style="pointer-events: none; width: 100%; height: 100%; position: absolute; top: 200x; left: 0; margin-top: -50px; transform: scale(1.1);"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+    <div class="container">
+        <section id="popular-songs" class="py-5 mt-5">
+            <h3>The Best Songs on Repeat</h3>
+
+            <div class="slider-container mt-5" style="position: relative; overflow: hidden;">
+                <button class="scroll-button left" onclick="slideLeft()"
+                    style="position: absolute; top: 50%; transform: translateY(-50%); background-color: gray; color: white; border: none; border-radius: 50%; padding: 10px; cursor: pointer; z-index: 10; left: 0px;">&lt;</button>
+                <button class="scroll-button right" onclick="slideRight()"
+                    style="position: absolute; top: 50%; transform: translateY(-50%); background-color: gray; color: white; border: none; border-radius: 50%; padding: 10px; cursor: pointer; z-index: 10; right: 0px;">&gt;</button>
+
+                <div class="slider" id="song-slider" style="display: flex; transition: transform 0.5s ease;">
+                    <div class="card"
+                        style="border: none; text-align: left; background-color: transparent; flex: 0 0 auto; width: 200px; margin: 0 10px;">
+                        <a href="view.html?artist=Lady%20Gaga&title=Die%20With%20A%20Smile">
+                            <img src="https://github.com/nyxash/files/blob/2fc060fe30f97846177fd20ac9d5447ac797e130/song1.jpg?raw=true"
+                                class="card-img-top" alt="Song 1"
+                                style="height: 190px; object-fit: cover; border-radius: 10px;">
+                        </a>
+                        <h5 class="card-title mt-3" style="text-decoration: none;">Die With A Smile</h5>
+                        <p class="card-text" style="text-decoration: none; color: gray; line-height: 1.5;">Lady Gaga,
+                            Bruno Mars</p>
+                    </div>
+                    <div class="card"
+                        style="border: none; text-align: left; background-color: transparent; flex: 0 0 auto; width: 200px; margin: 0 10px;">
+                        <a href="view.html?artist=Billie%20Eilish&title=BIRDS%20OF%20A%20FEATHER">
+                            <img src="https://github.com/nyxash/files/blob/2fc060fe30f97846177fd20ac9d5447ac797e130/song2.jfif?raw=true"
+                                class="card-img-top" alt="Song 2"
+                                style="height: 190px; object-fit: cover; border-radius: 10px;">
+                        </a>
+                        <h5 class="card-title mt-3" style="text-decoration: none;">BIRDS OF A FEATHER</h5>
+                        <p class="card-text" style="text-decoration: none; color: gray; line-height: 1.5;">Billie Eilish
+                        </p>
+                    </div>
+                    <div class="card"
+                        style="border: none; text-align: left; background-color: transparent; flex: 0 0 auto; width: 200px; margin: 0 10px;">
+                        <a href="view.html?artist=Jimin&title=Who">
+                            <img src="https://github.com/nyxash/files/blob/2fc060fe30f97846177fd20ac9d5447ac797e130/song3.jpg?raw=true"
+                                class="card-img-top" alt="Song 3"
+                                style="height: 190px; object-fit: cover; border-radius: 10px;">
+                        </a>
+                        <h5 class="card-title mt-3" style="text-decoration: none;">Who</h5>
+                        <p class="card-text" style="text-decoration: none; color: gray; line-height: 1.5;">Jimin</p>
+                    </div>
+                    <div class="card"
+                        style="border: none; text-align: left; background-color: transparent; flex: 0 0 auto; width: 200px; margin: 0 10px;">
+                        <a href="view.html?artist=Sabrina%20Carpenter&title=Espresso">
+                            <img src="https://github.com/nyxash/files/blob/2fc060fe30f97846177fd20ac9d5447ac797e130/song4.jpg?raw=true"
+                                class="card-img-top" alt="Song 4"
+                                style="height: 190px; object-fit: cover; border-radius: 10px;">
+                        </a>
+                        <h5 class="card-title mt-3" style="text-decoration: none;">Espresso</h5>
+                        <p class="card-text" style="text-decoration: none; color: gray; line-height: 1.5;">Sabrina
+                            Carpenter</p>
+                    </div>
+                    <div class="card"
+                        style="border: none; text-align: left; background-color: transparent; flex: 0 0 auto; width: 200px; margin: 0 10px;">
+                        <a href="view.html?artist=Bini&title=Cherry%20On%20Top">
+                            <img src="https://github.com/nyxash/files/blob/2fc060fe30f97846177fd20ac9d5447ac797e130/song5.jfif?raw=true"
+                                class="card-img-top" alt="Song 5"
+                                style="height: 190px; object-fit: cover; border-radius: 10px;">
+                        </a>
+                        <h5 class="card-title mt-3" style="text-decoration: none;">Cherry On Top</h5>
+                        <p class="card-text" style="text-decoration: none; color: gray; line-height: 1.5;">BINI</p>
+                    </div>
+                    <div class="card"
+                        style="border: none; text-align: left; background-color: transparent; flex: 0 0 auto; width: 200px; margin: 0 10px;">
+                        <a href="view.html?artist=Beyonce&title=Texas%20Hold%20‘Em">
+                            <img src="https://github.com/nyxash/files/blob/2fc060fe30f97846177fd20ac9d5447ac797e130/song6.jpg?raw=true"
+                                class="card-img-top" alt="Song 6"
+                                style="height: 190px; object-fit: cover; border-radius: 10px;">
+                        </a>
+                        <h5 class="card-title mt-3" style="text-decoration: none;">Texas Hold ‘Em</h5>
+                        <p class="card-text" style="text-decoration: none; color: gray; line-height: 1.5;">Beyoncé</p>
+                    </div>
+                    <div class="card"
+                        style="border: none; text-align: left; background-color: transparent; flex: 0 0 auto; width: 200px; margin: 0 10px;">
+                        <a
+                            href="view.html?artist=Ariana%20Grande&title=we%20can%27t%20be%20friends%20(wait%20for%20your%20love)">
+                            <img src="https://github.com/nyxash/files/blob/2fc060fe30f97846177fd20ac9d5447ac797e130/song7.jpg?raw=true"
+                                class="card-img-top" alt="Song 7"
+                                style="height: 190px; object-fit: cover; border-radius: 10px;">
+                        </a>
+                        <h5 class="card-title mt-3" style="text-decoration: none;">We Can’t Be Friends</h5>
+                        <p class="card-text" style="text-decoration: none; color: gray; line-height: 1.5;">Ariana Grande
+                        </p>
+                    </div>
+                    <div class="card"
+                        style="border: none; text-align: left; background-color: transparent; flex: 0 0 auto; width: 200px; margin: 0 10px;">
+                        <a href="view.html?artist=Taylor%20Swift&title=Fortnight">
+                            <img src="https://github.com/nyxash/files/blob/2fc060fe30f97846177fd20ac9d5447ac797e130/song8.jpg?raw=true"
+                                class="card-img-top" alt="Song 8"
+                                style="height: 190px; object-fit: cover; border-radius: 10px;">
+                        </a>
+                        <h5 class="card-title mt-3" style="text-decoration: none;">Fortnight</h5>
+                        <p class="card-text" style="text-decoration: none; color: gray; line-height: 1.5;">Taylor Swift
+                        </p>
+                    </div>
+                    <div class="card"
+                        style="border: none; text-align: left; background-color: transparent; flex: 0 0 auto; width: 200px; margin: 0 10px;">
+                        <a href="view.html?artist=Olivia%20Rodrigo&title=obsessed">
+                            <img src="https://github.com/nyxash/files/blob/2fc060fe30f97846177fd20ac9d5447ac797e130/song9.jpg?raw=true"
+                                class="card-img-top" alt="Song 9"
+                                style="height: 190px; object-fit: cover; border-radius: 10px;">
+                        </a>
+                        <h5 class="card-title mt-3" style="text-decoration: none;">Obsessed</h5>
+                        <p class="card-text" style="text-decoration: none; color: gray; line-height: 1.5;">Olivia
+                            Rodrigo</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="container py-5">
+        <section id="about-musixmix" class="about-section">
+            <h3 class="text-center mb-4">About MusixMix</h3>
+            <p class="lead text-center" style="font-size: large;">
+                MusixMix is a powerful song lyrics search tool that allows you to easily find your favorite songs using just
+                their lyrics. By leveraging a robust API, MusixMix provides quick and accurate results, making it the
+                go-to platform for discovering songs based on the lyrics you remember. Whether you're trying to recall a specific song
+                or want to explore new music, MusixMix helps you find the perfect track with just a few words.<br><br>
+                <em>Simply enter a lyric or phrase, and let MusixMix do the rest!</em>
+            </p>
+        </section>
+    </div>
+
+    <div class="container text-center my-5">
+        <h2 style="font-size: 24px; margin-bottom: 50px;">Lyrics That Remind You to Keep Going</h2>
+        <div class="row justify-content-center">
+
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="card text-white text-center"
+                    style="background: linear-gradient(135deg, #FFC107, #FF5722); border-radius: 10px; padding: 20px;">
+                    <a href="view.html?artist=Rachel%20Platten&title=Fight%20Song"
+                        style="text-decoration: none; color: inherit;">
+                        <p style="font-size: 18px; font-weight: bold;">"Hold on, you're stronger than you know"</p>
+                        <div style="font-size: 14px; font-weight: bold; opacity: 0.8;">FIGHT SONG<br>Rachel Platten
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="card text-white"
+                    style="background: linear-gradient(135deg, #3F51B5, #009688); border-radius: 10px; padding: 20px;">
+                    <a href="view.html?artist=Journey&title=Don%27t%20Stop%20Believin%27"
+                        style="text-decoration: none; color: inherit;">
+                        <p style="font-size: 18px; font-weight: bold;">"Don't stop believin', hold on to that feeling"
+                        </p>
+                        <div style="font-size: 14px; font-weight: bold; opacity: 0.8;">DON'T STOP BELIEVIN'<br>Journey
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="card text-white"
+                    style="background: linear-gradient(135deg, #2196F3, #E91E63); border-radius: 10px; padding: 20px;">
+                    <a href="view.html?artist=Andy%20Grammer&title=Keep%20Your%20Head%20Up"
+                        style="text-decoration: none; color: inherit;">
+                        <p style="font-size: 18px; font-weight: bold;">"Just keep your head up, and you’ll get through
+                            this."</p>
+                        <div style="font-size: 14px; font-weight: bold; opacity: 0.8;">KEEP YOUR HEAD UP<br>Andy Grammer
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        let currentPosition = 0;
+
+        function slideLeft() {
+            const slider = document.getElementById('song-slider');
+            const cardWidth = 230;
+            currentPosition = Math.min(currentPosition + cardWidth, 0);
+            slider.style.transform = `translateX(${currentPosition}px)`;
+        }
+
+        function slideRight() {
+            const slider = document.getElementById('song-slider');
+            const sliderWidth = slider.scrollWidth;
+            const containerWidth = slider.parentElement.offsetWidth;
+            const cardWidth = 230;
+            const maxPosition = -(sliderWidth - containerWidth);
+            currentPosition = Math.max(currentPosition - cardWidth, maxPosition);
+            slider.style.transform = `translateX(${currentPosition}px)`;
+        }
+
+        document.querySelector('.slider-container').addEventListener('mouseenter', () => {
+            document.querySelector('.scroll-button.left').style.display = 'block';
+            document.querySelector('.scroll-button.right').style.display = 'block';
+        });
+
+        document.querySelector('.slider-container').addEventListener('mouseleave', () => {
+            document.querySelector('.scroll-button.left').style.display = 'none';
+            document.querySelector('.scroll-button.right').style.display = 'none';
+        });
+    </script>
+</body>
+
+</html>
