@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <link rel="icon"
+        href="https://github.com/nyxash/files/blob/c6cbeccd0f175d08cdffd49449fa6f728fe06003/404-icon.png?raw=true">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body
+    style="background-color: #ffeeaa; font-family: Arial, sans-serif; color: #555; padding: 50px 0; text-align: center;">
+
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6" style="text-align: center;">
+                <img src="https://github.com/nyxash/files/blob/c6cbeccd0f175d08cdffd49449fa6f728fe06003/404.png?raw=true"
+                    alt="404" style="width: 100%; max-width: 500px; margin-bottom: 10px;">
+                <p style="font-size: 1.5rem; margin-bottom: 20px; font-weight: bold; color: black;">Oops! This Page Not
+                    Found.</p>
+                <p style="font-size: 0.9rem; margin-bottom: 20px;">Why not relax and play the Cherry Click Game while
+                    you're here?<br> You can return to the homepage once you're done!</p>
+            </div>
+
+            <div class="col-12 col-md-6" style="text-align: center;">
+                <div id="game-container"
+                    style="position: relative; width: 100%; height: 350px; background-color: #fff; border-radius: 10px; margin: 20px 0; overflow: hidden; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+                    <button id="play-icon" class="play-icon" onclick="startGame()"
+                        style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 3rem; color: #ff5b5b; background-color: transparent; border: none; cursor: pointer;">►</button>
+                </div>
+                <div class="scoreboard" style="font-size: 1.5rem; color: rgb(54, 53, 53);">
+                    Score: <span id="score">0</span>
+                </div>
+                <div class="timer" style="font-size: 1rem; color: gray; margin-top: 5px;">
+                    Time Left: <span id="timer">30</span> seconds
+                </div>
+                <div id="game-over" class="game-over" style="color: #e04d5e; font-size: 1.8rem; font-weight: bold;">
+                </div>
+
+                <div class="button-container" style="margin-top: 5px;">
+                    <button id="restart-button" onclick="restartGame()" disabled
+                        style="padding: 10px 20px; font-size: 1rem; margin: 10px; background-color: #ccc; color: #888; border: none; border-radius: 5px; cursor: not-allowed;">
+                        Restart
+                    </button>
+                    <button id="play-again-button" onclick="startGame()" disabled
+                        style="padding: 10px 20px; font-size: 1rem; margin: 10px; background-color: #ccc; color: #888; border: none; border-radius: 5px; cursor: not-allowed;">
+                        Play Again
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div
+        style="position: relative; left: 50%; transform: translateX(-50%); text-align: center; width: 100%; top: 30px;">
+        <a href="index.html" class="home-link">
+            <img src="https://github.com/nyxash/files/blob/cd973d8f49e10e3b321e351c4ede58c9d4ec0fec/flower.png?raw=true"
+                alt="Return to Home" style="width: 100px; transition: transform 0.5s ease;"
+                onmouseover="this.style.transform='rotate(360deg) scale(1.2)'" onmouseout="this.style.transform='none'"
+                onmousedown="this.style.transform='rotate(360deg) scale(1.5)'">
+        </a>
+    </div>
+
+    <script>
+        let gameContainer = document.getElementById("game-container");
+        let scoreDisplay = document.getElementById("score");
+        let timerDisplay = document.getElementById("timer");
+        let gameOverMessage = document.getElementById("game-over");
+
+        let restartButton = document.getElementById("restart-button");
+        let playAgainButton = document.getElementById("play-again-button");
+        let playIconButton = document.getElementById("play-icon");
+
+        let score = 0;
+        let timeLeft = 30;
+        let gameOver = false;
+        let timerInterval;
+        let cherrySpawnInterval;
+
+        let cherrySpawnRate = 50;
+
+        function spawnCherry() {
+            if (gameOver) return;
+
+            let cherryElement = document.createElement("div");
+            cherryElement.style.position = "absolute";
+            cherryElement.style.width = "60px";
+            cherryElement.style.height = "60px";
+            cherryElement.style.backgroundImage = "url('https://github.com/nyxash/files/blob/c6cbeccd0f175d08cdffd49449fa6f728fe06003/square.png?raw=true')";
+            cherryElement.style.backgroundSize = "100% 100%";
+            cherryElement.style.cursor = "pointer";
+            cherryElement.style.left = Math.random() * (gameContainer.offsetWidth - 50) + "px";
+            cherryElement.style.top = Math.random() * (gameContainer.offsetHeight - 50) + "px";
+            gameContainer.appendChild(cherryElement);
+
+            cherryElement.addEventListener("click", function () {
+                if (!gameOver) {
+                    score++;
+                    scoreDisplay.innerText = score;
+                    cherryElement.remove();
+                }
+            });
+
+            setTimeout(() => {
+                if (cherryElement.parentElement) {
+                    cherryElement.remove();
+                }
+            }, 2000);
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if (timeLeft > 0) {
+                    timeLeft--;
+                    timerDisplay.innerText = timeLeft;
+                    adjustCherrySpawnRate();
+                } else {
+                    endGame();
+                }
+            }, 1000);
+        }
+
+        function adjustCherrySpawnRate() {
+            if (timeLeft <= 10 && cherrySpawnRate > 300) {
+                cherrySpawnRate = 300;
+                clearInterval(cherrySpawnInterval);
+                cherrySpawnInterval = setInterval(spawnCherry, cherrySpawnRate);
+            } else if (timeLeft <= 15 && cherrySpawnRate > 500) {
+                cherrySpawnRate = 500;
+                clearInterval(cherrySpawnInterval);
+                cherrySpawnInterval = setInterval(spawnCherry, cherrySpawnRate);
+            } else if (timeLeft <= 20 && cherrySpawnRate > 700) {
+                cherrySpawnRate = 700;
+                clearInterval(cherrySpawnInterval);
+                cherrySpawnInterval = setInterval(spawnCherry, cherrySpawnRate);
+            }
+        }
+
+        function startGame() {
+            gameContainer.innerHTML = "";
+            score = 0;
+            timeLeft = 30;
+            scoreDisplay.innerText = score;
+            timerDisplay.innerText = timeLeft;
+            gameOverMessage.innerText = "";
+            gameOver = false;
+
+            playAgainButton.disabled = true;
+            playAgainButton.style.cursor = "not-allowed";
+            playAgainButton.style.backgroundColor = "#ccc";
+            playAgainButton.style.color = "#888";
+
+            restartButton.disabled = false;
+            restartButton.style.backgroundColor = "#ff5b5b";
+            restartButton.style.color = "white";
+            restartButton.style.cursor = "pointer";
+
+            cherrySpawnRate = 800;
+            cherrySpawnInterval = setInterval(spawnCherry, cherrySpawnRate);
+            startTimer();
+        }
+
+        function restartGame() {
+            clearInterval(timerInterval);
+            clearInterval(cherrySpawnInterval);
+            startGame();
+        }
+
+        function endGame() {
+            clearInterval(timerInterval);
+            clearInterval(cherrySpawnInterval);
+            gameOverMessage.innerText = "Game Over! Your Score: " + score;
+            gameOver = true;
+
+            restartButton.disabled = true;
+            restartButton.style.backgroundColor = "#ccc";
+            restartButton.style.color = "#888";
+            restartButton.style.cursor = "not-allowed";
+
+            playAgainButton.disabled = false;
+            playAgainButton.style.cursor = "pointer";
+            playAgainButton.style.backgroundColor = "#ff5b5b";
+            playAgainButton.style.color = "white";
+        }
+    </script>
+
+</body>
+
+</html>
