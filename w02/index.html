@@ -146,8 +146,10 @@
         <div class="display-3">Explore Batangas</div>
       </div>
     </div>
+  </div>
 
-    <div class="accordion my-5" id="natureSection">
+  <div class="container my-5">
+    <div class="accordion" id="natureSection">
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingNature">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -158,7 +160,8 @@
         <div id="collapseNature" class="accordion-collapse collapse" aria-labelledby="headingNature"
           data-bs-parent="#natureSection">
           <div class="accordion-body">
-            <div class="row" id="natureContainer"></div>
+            <div class="row justify-content-center" id="natureContainer">
+            </div>
           </div>
         </div>
       </div>
@@ -175,7 +178,8 @@
         <div id="collapseHeritage" class="accordion-collapse collapse" aria-labelledby="headingHeritage"
           data-bs-parent="#heritageSection">
           <div class="accordion-body">
-            <div class="row" id="heritageContainer"></div>
+            <div class="row justify-content-center" id="heritageContainer">
+            </div>
           </div>
         </div>
       </div>
@@ -192,7 +196,8 @@
         <div id="collapseBeaches" class="accordion-collapse collapse" aria-labelledby="headingBeaches"
           data-bs-parent="#beachesSection">
           <div class="accordion-body">
-            <div class="row" id="beachesContainer"></div>
+            <div class="row justify-content-center" id="beachesContainer">
+            </div>
           </div>
         </div>
       </div>
@@ -245,15 +250,15 @@
 
   <script>
     const spots = [
-      { name: "Taal Volcano", category: "Nature", image: "https://github.com/nyxash/files/blob/2e44d659f13321de513c7f2366181c673947883d/taalvolcano.jpg?raw=true", description: "This stunning volcano sits within a serene lake and creates a unique picturesque landscape. Known for its activity, it last erupted in January 2020. Hikers can enjoy breathtaking views from nearby ridges, and the area is steeped in folklore about its fiery heart and natural beauty." },
-      { name: "Mount Batulao", category: "Nature", image: "https://github.com/nyxash/files/blob/2e44d659f13321de513c7f2366181c673947883d/mtbatulao.jpg?raw=true", description: "With rolling hills and grassy slopes, Mt. Batulao is a favorite destination for hikers of all levels. Its trails are easy to navigate and offer beautiful panoramas. The mountain has a rich history as it served as a lookout during the Philippine Revolution. Wildflowers and fresh air enhance its charm." },
-      { name: "Mount Maculot", category: "Nature", image: "https://github.com/nyxash/files/blob/2e44d659f13321de513c7f2366181c673947883d/mtmaculot.jpg?raw=true", description: "Rising above Cuenca, Mt. Maculot is famous for its Rockies, which offer stunning views of Taal Lake. The mountain features lush trails, enchanting waterfalls, and the historic San Isidro Labrador Church at its base. Its unique shape and serene environment make it a cherished destination for nature lovers and adventurers alike." },
-      { name: "Taal Heritage Town", category: "Heritage", image: "https://github.com/nyxash/files/blob/2e44d659f13321de513c7f2366181c673947883d/taalheritage.jpg?raw=true", description: "Stepping into this charming town feels like entering a different era filled with well-preserved Spanish colonial buildings. Its streets are lined with ancestral homes that showcase unique designs and rich history. This vibrant location is famous for its local culture and delicious dishes, including Taal's famous lomi. Visitors can wander through historic churches and experience the essence of Filipino heritage." },
-      { name: "Metropolitan Cathedral of San Sebastian", category: "Heritage", image: "https://github.com/nyxash/files/blob/2e44d659f13321de513c7f2366181c673947883d/sansebastian.jpg?raw=true", description: "This stunning architectural gem in Lipa is known for its beautiful design and rich history. Built in the late 1800s, it features a mix of Gothic and Romanesque styles. The cathedral serves as an important spiritual center for the local community and attracts visitors with its colorful stained glass windows and serene atmosphere. It symbolizes the faith and unity of the people in Lipa." },
-      { name: "Caleruega Church", category: "Heritage", image: "https://github.com/nyxash/files/blob/2e44d659f13321de513c7f2366181c673947883d/caleruega.jfif?raw=true", description: "Surrounded by the peaceful hills of Batangas, this quiet spot is known for its beautiful scenery and relaxing vibe. Caleruega was built in the 1990s by Dominican priests as a place for spiritual retreats and reflection. It has a charming church, inspired by the Transfiguration Chapel in Spain, with gardens and great views. Many people come here for retreats or weddings, enjoying the calm and taking a break from busy city life. Its peaceful surroundings and rich history make it perfect for rest and reflection." },
-      { name: "Laiya Beach", category: "Beaches", image: "https://github.com/nyxash/files/blob/2e44d659f13321de513c7f2366181c673947883d/laiya.jpg?raw=true", description: "Renowned for its soft white sand and crystal-clear waters, making it a perfect retreat for beachgoers. Once a peaceful fishing village, it has evolved into a favorite escape for families and tourists, offering a harmonious blend of relaxation and recreational activities." },
-      { name: "Matabungkay Beach", category: "Beaches", image: "https://github.com/nyxash/files/blob/2e44d659f13321de513c7f2366181c673947883d/matabungkay.jpg?raw=true", description: "Famous for its bamboo rafts and wide stretch of golden sand, this beach has been a popular destination since the 1950s. Originally a simple local getaway, Matabungkay’s calm, shallow waters make it ideal for swimming and floating along the shoreline, offering visitors a taste of nostalgia along with its natural beauty." },
-      { name: "Calatagan Beach", category: "Beaches", image: "https://github.com/nyxash/files/blob/2e44d659f13321de513c7f2366181c673947883d/calatagan.jpg?raw=true", description: "With its fine white sand and breathtaking sunsets, Calatagan’s beaches are often compared to Boracay’s beauty. Historically, this coastal area was once a fishing village and is now a thriving destination for both relaxation and adventure, while also being known for its rich archaeological history dating back to pre-colonial times." }
+      { name: "Taal Volcano", category: "Nature", image: "https://github.com/nyxash/files/blob/2e44d659f13321de513c7f2366181c673947883d/taalvolcano.jpg?raw=true", description: "This stunning volcano sits within a serene lake and creates a unique picturesque landscape. Known for its activity, it last erupted in January 2020. Hikers can enjoy breathtaking views from nearby ridges, and the area is steeped in folklore about its fiery heart and natural beauty.", map: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30968.912283749607!2d120.97709121293883!3d14.011251980101486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd738d30c66c4f%3A0x749396e27e5f3873!2sTaal%20Volcano!5e0!3m2!1sen!2sph!4v1732513676394!5m2!1sen!2sph" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>' },
+      { name: "Mount Batulao", category: "Nature", image: "https://github.com/nyxash/files/blob/2e44d659f13321de513c7f2366181c673947883d/mtbatulao.jpg?raw=true", description: "With rolling hills and grassy slopes, Mt. Batulao is a favorite destination for hikers of all levels. Its trails are easy to navigate and offer beautiful panoramas. The mountain has a rich history as it served as a lookout during the Philippine Revolution. Wildflowers and fresh air enhance its charm.", map: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30965.31935628096!2d120.78547531297639!3d14.037865778583425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd9eb53e3c3949%3A0x45eae461bc85fab6!2sMount%20Batulao%20Peak!5e0!3m2!1sen!2sph!4v1732515512961!5m2!1sen!2sph" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>' },
+      { name: "Mount Maculot", category: "Nature", image: "https://github.com/nyxash/files/blob/2e44d659f13321de513c7f2366181c673947883d/mtmaculot.jpg?raw=true", description: "Rising above Cuenca, Mt. Maculot is famous for its Rockies, which offer stunning views of Taal Lake. The mountain features lush trails, enchanting waterfalls, and the historic San Isidro Labrador Church at its base. Its unique shape and serene environment make it a cherished destination for nature lovers and adventurers alike.", map: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15490.505357307185!2d121.03935738694162!3d13.921268983813423!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd0d3dc3eda773%3A0xa89b0a11060939eb!2sMount%20Maculot!5e0!3m2!1sen!2sph!4v1732515593726!5m2!1sen!2sph" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>' },
+      { name: "Taal Heritage Town", category: "Heritage", image: "https://github.com/nyxash/files/blob/2e44d659f13321de513c7f2366181c673947883d/taalheritage.jpg?raw=true", description: "Stepping into this charming town feels like entering a different era filled with well-preserved Spanish colonial buildings. Its streets are lined with ancestral homes that showcase unique designs and rich history. This vibrant location is famous for its local culture and delicious dishes, including Taal's famous lomi. Visitors can wander through historic churches and experience the essence of Filipino heritage.", map: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3873.3123491079205!2d120.9211906743194!3d13.880262486525105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd0a380db81c7b%3A0x6bbfeaef870058c1!2sThe%20Heritage%20Town%20of%20Taal!5e0!3m2!1sen!2sph!4v1732515710894!5m2!1sen!2sph" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>' },
+      { name: "Metropolitan Cathedral of San Sebastian", category: "Heritage", image: "https://github.com/nyxash/files/blob/2e44d659f13321de513c7f2366181c673947883d/sansebastian.jpg?raw=true", description: "This stunning architectural gem in Lipa is known for its beautiful design and rich history. Built in the late 1800s, it features a mix of Gothic and Romanesque styles. The cathedral serves as an important spiritual center for the local community and attracts visitors with its colorful stained glass windows and serene atmosphere. It symbolizes the faith and unity of the people in Lipa.", map: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3872.2977142277814!2d121.16091227432072!3d13.940870786470988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd6ca3970e044f%3A0x43429f15ef777fed!2sMetropolitan%20Cathedral%20of%20San%20Sebastian%20(Roman%20Catholic%20Archdiocese%20of%20Lipa)!5e0!3m2!1sen!2sph!4v1732515761156!5m2!1sen!2sph" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>' },
+      { name: "Caleruega Church", category: "Heritage", image: "https://github.com/nyxash/files/blob/2e44d659f13321de513c7f2366181c673947883d/caleruega.jfif?raw=true", description: "Surrounded by the peaceful hills of Batangas, this quiet spot is known for its beautiful scenery and relaxing vibe. Caleruega was built in the 1990s by Dominican priests as a place for spiritual retreats and reflection. It has a charming church, inspired by the Transfiguration Chapel in Spain, with gardens and great views. Many people come here for retreats or weddings, enjoying the calm and taking a break from busy city life. Its peaceful surroundings and rich history make it perfect for rest and reflection.", map: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.0804743950716!2d120.83264677432356!3d14.07242508635372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd9c38f5a38c71%3A0x13f130f98f034c10!2sCaleruega%20Philippines!5e0!3m2!1sen!2sph!4v1732515805531!5m2!1sen!2sph" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>' },
+      { name: "Laiya Beach", category: "Beaches", image: "https://github.com/nyxash/files/blob/2e44d659f13321de513c7f2366181c673947883d/laiya.jpg?raw=true", description: "Renowned for its soft white sand and crystal-clear waters, making it a perfect retreat for beachgoers. Once a peaceful fishing village, it has evolved into a favorite escape for families and tourists, offering a harmonious blend of relaxation and recreational activities.", map: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3876.9100702734027!2d121.43479287431474!3d13.663231986719454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd2595f1e34295%3A0xc6695bb915fa7823!2sLAIYA%20BEACH%20RESORT%20BATANGAS!5e0!3m2!1sen!2sph!4v1732515857746!5m2!1sen!2sph" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>' },
+      { name: "Matabungkay Beach", category: "Beaches", image: "https://github.com/nyxash/files/blob/2e44d659f13321de513c7f2366181c673947883d/matabungkay.jpg?raw=true", description: "Famous for its bamboo rafts and wide stretch of golden sand, this beach has been a popular destination since the 1950s. Originally a simple local getaway, Matabungkay’s calm, shallow waters make it ideal for swimming and floating along the shoreline, offering visitors a taste of nostalgia along with its natural beauty.", map: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1936.0810212607612!2d120.61710378841677!3d13.94895544661597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bdbfe5a862e1bb%3A0x45908714c42f8ffe!2sMatabungkay%20Beach%20resort!5e0!3m2!1sen!2sph!4v1732515923506!5m2!1sen!2sph" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>' },
+      { name: "Calatagan Beach", category: "Beaches", image: "https://github.com/nyxash/files/blob/2e44d659f13321de513c7f2366181c673947883d/calatagan.jpg?raw=true", description: "With its fine white sand and breathtaking sunsets, Calatagan’s beaches are often compared to Boracay’s beauty. Historically, this coastal area was once a fishing village and is now a thriving destination for both relaxation and adventure, while also being known for its rich archaeological history dating back to pre-colonial times.", map: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3874.144949184904!2d120.63691237431834!3d13.830333386569762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bdb0a0fb41b719%3A0x226ffce094f6e5d7!2sCalatagan%20Beach%20House!5e0!3m2!1sen!2sph!4v1732515959121!5m2!1sen!2sph" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>' }
     ];
 
     const natureContainer = document.getElementById("natureContainer");
@@ -266,12 +271,13 @@
 
       const spotHTML = `
       <div class="row tourist-spot" id="${spot.name.replace(/\s+/g, '-').toLowerCase()}">
-        <div class="col-md-6 ${imageOrderClass}">
+        <div class="col-md-6 mt-5 ${imageOrderClass}">
           <img src="${spot.image}" alt="${spot.name}" class="img-fluid"> 
         </div>
         <div class="col-md-6 spot-description ${orderClass}">
           <h2>${spot.name}</h2>
           <p class="text-justify">${spot.description}</p>
+          <div class="col-12 ratio ratio-16x9">${spot.map}</div>
         </div>
       </div>
       <hr>
